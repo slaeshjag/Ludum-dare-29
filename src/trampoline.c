@@ -8,7 +8,7 @@ struct trampoline *trampoline_init(struct surface *s) {
 	t = malloc(sizeof(*t));
 	t->sprite = d_sprite_load("res/trampoline.spr", 0, DARNIT_PFORMAT_RGB5A1);
 	t->angle = 0;
-	d_sprite_move(t->sprite, (s->r / 2 - d_sprite_width(t->sprite) / 2), 0);
+	d_sprite_move(t->sprite, -d_sprite_width(t->sprite) / 2 + s->r / 2, -d_sprite_height(t->sprite));
 
 	return t;
 }
