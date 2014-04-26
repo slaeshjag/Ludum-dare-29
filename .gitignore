@@ -1,0 +1,10 @@
+bin/
+*.o
+*.elf
+*.so
+*.dll
+*.exe
+*.ldi
+*.swp
+*.swo
+timelapse/frames
