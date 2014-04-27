@@ -3,8 +3,8 @@
 
 BIN		=	$(TOPDIR)/bin/fanten-bbts.elf
 
-DBGFLAGS	=	-O0 -g -D__DEBUG__
-#DBGFLAGS	=	-O3 -g
+#DBGFLAGS	=	-O0 -g -D__DEBUG__
+DBGFLAGS	=	-O3 -g
 #Flags specific for tools
 LDTOOLS		:=	$(LDFLAGS)
 CFLAGS		:=	$(CFLAGS) -Wall -O3 $(DBGFLAGS)
