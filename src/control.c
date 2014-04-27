@@ -20,6 +20,15 @@ struct control *control_init() {
 }
 
 
+void *control_destroy(struct control *c) {
+	if (!c)
+		return NULL;
+	d_text_surface_free(c->a_vel);
+	free(c);
+	return NULL;
+}
+
+
 void control_loop(struct surface *s, struct trampoline *t, struct fant *f, struct control *c) {
 	char buff[256];
 	int location, f_angle;

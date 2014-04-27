@@ -35,6 +35,19 @@ struct surface *surface_init(int r, int segs) {
 }
 
 
+void *surface_destroy(struct surface *s) {
+	if (!s)
+		return NULL;
+	free(s->pixbuff);
+	free(s->seg);
+	d_render_tilesheet_free(s->srf);
+	d_sprite_free(s->sprite);
+	free(s);
+
+	return NULL;
+}
+
+
 void surface_segment_spawn_crack(struct surface *s, int seg) {
 	int seg_width, center, wiggle, pos, h_wiggle, h_pos, x, y, i, p, old_h, j, dj, d;
 
@@ -108,7 +121,6 @@ void surface_segment_update_graphics(struct surface *s, int seg) {
 
 	d_deg = 3600 / s->segs;
 	deg_start = d_deg * seg;
-	fprintf(stderr, "Segments: %i, %i\n", s->segs, seg);
 	
 	/* Should be enough steps */
 	steps = s->pixbuf_w * 16 / s->segs;
@@ -169,7 +181,6 @@ void surface_generate(struct surface *s) {
 		surface_segment_update_graphics(s, i);
 
 	for (i = 0; i < s->r / 32; i++) {
-		fprintf(stderr, "floodfill %i %i %i\n", (i + 1) * 64 - 1, s->r / 2, (i + 1) * 64);
 		surface_floodfill_interior(s, (i + 1) * 32 - s->r / 64, s->r / 2, (i + 1) * 32);
 	}
 	

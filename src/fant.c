@@ -1,5 +1,6 @@
 /* Bouncy bouncy elephant */
 #include "fant.h"
+#include "fanten.h"
 #include "surface.h"
 
 #define	ABS(x)		((x) < 0 ? (-x) : (x))
@@ -14,6 +15,15 @@ struct fant *fant_init(struct surface *s) {
 	f->d_angle = 0;
 	f->velocity = 0;
 
+	return f;
+}
+
+
+void *fant_destroy(struct fant *f) {
+	if (!f)
+		return NULL;
+	d_sprite_free(f->sprite);
+	free(f);
 	return f;
 }
 
@@ -44,6 +54,7 @@ void fant_move(struct surface *s, struct fant *f, int angle) {
 				f->d_angle += angle;
 		} else if (angle) {
 			fprintf(stderr, "DEAD! %i\n", angle);
+			alive = 0;
 			return;
 		}
 		

@@ -16,6 +16,7 @@ struct fant {
 }i;
 
 struct fant *fant_init(struct surface *s);
+void *fant_destroy(struct fant *f);
 void fant_move(struct surface *s, struct fant *f, int angle);
 void fant_draw(struct fant *f);
 

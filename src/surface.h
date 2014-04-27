@@ -32,6 +32,7 @@ struct surface {
 };
 
 struct surface *surface_init(int r, int segs);
+void *surface_destroy(struct surface *s);
 void surface_segment_update_graphics(struct surface *s, int seg);
 void surface_generate(struct surface *s);
 

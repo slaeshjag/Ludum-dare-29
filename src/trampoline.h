@@ -10,6 +10,7 @@ struct trampoline {
 };
 
 struct trampoline *trampoline_init(struct surface *s);
+void *trampoline_destroy(struct trampoline *t);
 void trampoline_move(struct surface *s, struct trampoline *t, int deg);
 void trampoline_draw(struct trampoline *t);
 

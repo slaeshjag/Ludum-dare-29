@@ -14,6 +14,7 @@ struct control {
 };
 
 struct control *control_init();
+void *control_destroy(struct control *c);
 void control_loop(struct surface *s, struct trampoline *t, struct fant *f, struct control *c);
 
 
